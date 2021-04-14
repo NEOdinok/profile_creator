@@ -1,9 +1,11 @@
+//что именно далает этот файл???
+//discord-webhook-node и webhook-discord это разные фреймворки???
+//этот файл можно запустить и проверить его работаспособность в отрыве от всех остальных???
 function testWebhook (hw) {
 
     //import thewse 2 functions from discord-webhook-node
     const {Webhook, MessageBuilder } = require('discord-webhook-node');
 
-    //???
     const hook = new Webhook(hw);
 
     const IMAGE_URL = 'https://kb.rspca.org.au/wp-content/uploads/2018/11/golder-retriever-puppy.jpeg';
@@ -11,10 +13,10 @@ function testWebhook (hw) {
     hook.setAvatar(IMAGE_URL);
 
     var embed = new MessageBuilder()
-    .setTitle('Unnamed Bot | Nike SNKRS account generator')
-    .addField('Если ты видишь это, то ссылка на webhook указана верно, продолжай заполнять форму в приложении!', '----------------------------')
-    .setColor('#ddc3a5')
-    .setFooter('NEOdinok#6433, special for you');
+        .setTitle('Unnamed Bot | Nike SNKRS account generator')
+        .addField('Если ты видишь это, то ссылка на webhook указана верно, продолжай заполнять форму в приложении!', '----------------------------')
+        .setColor('#ddc3a5')
+        .setFooter('NEOdinok#6433, special for you');
 
     hook.sent(embed);
 }
