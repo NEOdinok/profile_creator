@@ -1,0 +1,23 @@
+{
+  "name": "profile_creator",
+  "version": "1.0.0",
+  "description": "sample text",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NEOdinok/profile_creator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NEOdinok/profile_creator/issues"
+  },
+  "homepage": "https://github.com/NEOdinok/profile_creator#readme",
+  "dependencies": {
+    "discord-webhook-node": "^1.1.8",
+    "webhook-discord": "^3.7.7"
+  }
+}
