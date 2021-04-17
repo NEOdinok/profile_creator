@@ -1,0 +1,42 @@
+html { 
+  overflow-y: hidden;
+}
+body {
+  background-color: #DDC3A5;
+}
+a {
+  font-size: 20px;
+}
+table.text  {
+  width:  100%;
+  border-spacing: 0;
+}
+table.text td, h4 {
+  font-size: 20px;
+  width: 50%; 
+  vertical-align: top; 
+}
+td.rightcol1 {
+  text-align: right;
+}
+td.rightcol2 {
+  text-align: left;
+}
+  
+.startButton {
+  margin-left: 40%;
+  margin-right: 40%;
+  margin-top: 10px;
+}
+  
+button {
+  border: 20px;
+  border-color: white;
+  background-color: black;
+  color: white;
+}
+  
+button, input {
+  border: 0;
+  height: 20px;
+}
