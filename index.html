@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Account Generator</title>
+    <!--что значат все эти теги rel, type и тд???-->
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    
+    <!--как запускать скрипты из html???-->
+    <script type="text/javascript" scr="discordModule.js"></script>
+    <script type="text/javascript" src="mainModule.js"></script>
+</head>
+
+<body style="margin: 15px">
+    <table class="text">
+        <tr>
+            <td>Unnamed Bot | Reger</td>
+            <!--что это за строка-->
+            <td id="discordTab" class="rightcol1 version">version 0.0.1</td>
+        </tr>
+    </table>
+
+    <h4 style="margin-top: 20px; margin-bottom: 2px">ONLINESIM API:</h4>
+    <input id="apikey" placeholder="**** **** **** ****" style="margin-right: 10px; height: 20px"
+        size="50"></input><button id="update">обновить</button>
+    
+    <br><br>
+
+    <a id="balance">Баланс: 0 руб.</a>
+    <br>
+    <a id="price">Цена номера: 0 руб.</a>
+    <br>
+    <!--че такое targe="_blank" ?-->
+    <form action="https://onlinesim.ru/v2/pages/pay" target="_blank">
+        <button style="margin-top: 10px">Пополнить баланс</button>
+    </form>
+    <br>
+    <h4 style="margin-bottom: 2px">Discord webhook</h4>
+    <input placeholder="https://discord.com/api/webhooks/****/****" id="hook"
+        style="margin-right: 10px; margin-bottom: 2px; height: 20px" size="50"></input><button
+        id="testHook">Проверить</button>
+    <table class="text">
+        <tr>
+            <td>
+                <h4 style="margin-bottom: 2px">Email: </h4>
+                <input id="email" placeholder="********@***.***" size="25"></input>
+            </td>
+            <!--что такое rightcol2 и rightcol1???-->
+            <td class="rightcol2">
+                <h4 style="text-align: left; margin-bottom: 2px">Пароль: </h4>
+                <input id="password" placeholder="********" size="25"></input>
+            </td>
+        </tr>
+    </table>
+    <h4 style="margin-bottom: 20px">Proxy (необязательно)</h4>
+    <input size="40"></input>
+    <br>
+    
+    <!--чет кнопка старт выглядин некрасиво пиздец-->
+    <!--что за div и зачем он тут нужен???-->
+    <div id="start" class="startButton"><button style="width: 100px; height: 25px">СТАРТ</button></div>
+
+    <!--что делает это скрипт и каждая его часть???-->
+    <script type="text/javascript">
+        document.getElementById("testHook").addEventListener("click", function () {
+            testWebhook(document.getElementById("hook").value);
+        }, false);
+
+        document.getElementById("update").addEventListener("click", function () {
+            checkBalance(document.getElementById("apikey").value);
+            checkPrice(document.getElementById("apikey").value);
+        }, false);
+
+        document.getElementById("start").addEventListener("click", function () {
+            register(document.getElementById("email").value, document.getElementById("password").value, names[Math.floor(Math.random() * (names.length - 0) + 0)], lastnames[Math.floor(Math.random() * (lastnames.length - 0) + 0)]);
+        }, false);
+
+        function checkBalance(api) {
+            fetch("https://onlinesim.ru/api/getBalance.php?apikey=" + api)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (myJson) {
+                document.getElementById("balance").innerHTML = "Баланс: " + (myJson.balance) + " руб";
+            })
+        }
+
+        function checkPrice(api) {
+            fetch("https://onlinesim.ru/api/getNumbersStats.php?apikey=" + api)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (myJson) {
+                    document.getElementById("price").innerHTML = "Цена: " + (myJson.services.service_nike.price) + " руб / номер";
+                })
+        }
+    </script>
+</body>
+
+
+</html>
